@@ -4,9 +4,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 
 # Angular Form template based on Angular 7+, Angular Material  <a href="https://github.com/karthikgb/AngularBootstrap4FormTemplate">AngularBootstrap4FormApp</a>
-<!-- <img src="https://angular-form-template-neb.herokuapp.com/assets/previewPics/angularTemplaetPreviewPic.png"/>
+<img src="https://angular-bootstrap-form-app.herokuapp.com/assets/projectPreview/AppFormPic.png"/>
 
-<img src="https://angular-form-template-neb.herokuapp.com/assets/previewPics/angularTemplaetPreviewPic.png"/> -->
+<img src="https://angular-bootstrap-form-app.herokuapp.com/assets/projectPreview/AppPaymentPendingDetail.png"/>
 
 ## Project Description
 
@@ -15,10 +15,10 @@ Application to enroll student detail
 
 Project technologies used
 - Angular 7 framework
-- Angular Material
+- Bootstrap 4
 
 ## Live demo
-https://angular-form-template-neb.herokuapp.com/
+https://angular-bootstrap-form-app.herokuapp.com
 
 https://medium.com/@hellotunmbi/how-to-deploy-angular-application-to-heroku-1d56e09c5147 
 
