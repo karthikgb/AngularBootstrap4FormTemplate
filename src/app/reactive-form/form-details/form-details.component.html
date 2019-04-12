@@ -1,0 +1,137 @@
+<div class="appFormHead">
+  <h4 class="headerformlable">APPLICATION FORM</h4>
+</div>
+<div class="formBdy">
+  <table class="lefttab" style="width:50%">
+    <tr>
+      <td class="slno">1.</td>
+      <td class="formlablesec">Date Of Admission</td>
+      <td class="formValesec">
+        <input matInput class="form-control inputag" [matDatepicker]="picker" placeholder="Choose a date">
+        <mat-datepicker-toggle class="togledate" matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </td>
+    </tr>
+    <tr>
+      <td class="slno">2.</td>
+      <td class="formlablesec">Temp ADM No</td>
+      <td class="formValesec">
+        <input type="text" class="form-control inputag">
+      </td>
+    </tr>
+    <tr>
+      <td class="slno">3.</td>
+      <td class="formlablesec">Name (As Per SSLC)</td>
+      <td class="formValesec"><input type="text" class="form-control inputag"></td>
+    </tr>
+    <tr>
+      <td class="slno">4.</td>
+      <td class="formlablesec">Father Name</td>
+      <td class="formValesec"><input type="text" class="form-control inputag"></td>
+    </tr>
+    <tr>
+      <td class="slno">5.</td>
+      <td class="formlablesec">Mother Name</td>
+      <td class="formValesec"><input type="text" class="form-control inputag"></td>
+    </tr>
+    <tr>
+      <td class="slno">6.</td>
+      <td class="formlablesec">Date Of Birth</td>
+      <td class="formValesec">
+        <input matInput class="form-control inputag" [matDatepicker]="picker1" placeholder="Choose a date">
+        <mat-datepicker-toggle class="togledate1" matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </td>
+
+    </tr>
+    <tr>
+      <td class="slno">7.</td>
+      <td class="formlablesec">Contact No</td>
+      <td class="formValesec"><input type="text" class="form-control inputag"></td>
+    </tr>
+    <tr>
+      <td class="slno">8.</td>
+      <td class="formlablesec">Alternate No</td>
+      <td class="formValesec"><input type="text" class="form-control inputag"></td>
+    </tr>
+    <tr>
+      <td class="slno">9.</td>
+      <td class="formlablesec">Current Address</td>
+      <td class="formValesec">
+        <textarea class="form-control inputag" rows="4"></textarea>
+      </td>
+    </tr>
+
+  </table>
+  <table class="righttab" style="width:48%">
+
+    <tr>
+      <td class="slno">10.</td>
+      <td class="formlablesec">Courses</td>
+      <td class="formValesec">
+        <select class="form-control inputag" id="sel1">
+          <option *ngFor="let Cour of Courses"> {{Cour.value}}</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td class="slno">11.</td>
+      <td class="formlablesec">Eligibility qualification</td>
+      <td class="formValesec">
+        <select class="form-control inputag" id="sel1">
+          <option *ngFor="let Elig of Eligibility"> {{Elig.value}}</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td class="slno">12.</td>
+      <td class="formlablesec">SSLC Reg No</td>
+      <td class="formValesec"><input type="text" class="form-control inputag"></td>
+    </tr>
+    <tr>
+      <td class="slno">13.</td>
+      <td class="formlablesec">Adhaar No</td>
+      <td class="formValesec"><input type="text" class="form-control inputag"></td>
+    </tr>
+    <tr>
+      <td class="slno">14.</td>
+      <td class="formlablesec">Category</td>
+      <td class="formValesec">
+        <select class="form-control inputag" id="sel1">
+          <option *ngFor="let Cate of Category"> {{Cate.value}}</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td class="slno">15.</td>
+      <td class="formlablesec">Caste</td>
+      <td class="formValesec"><input type="text" class="form-control inputag"></td>
+    </tr>
+    <tr>
+      <td class="slno">16.</td>
+      <td class="formlablesec">Fees</td>
+      <td class="formValesec">
+        <select class="form-control inputag" id="sel1">
+          <option *ngFor="let fee of Fees"> {{fee.value}}</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td class="slno">17.</td>
+      <td class="formlablesec">Permanent Address</td>
+      <td class="formValesec">
+        <textarea class="form-control inputag" rows="4"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td class="slno">18.</td>
+      <td class="formlablesec">Payment Status</td>
+      <td class="formValesec">
+        <button class="btn nextBtn" routerLink="/Form/Payment" type="button">--></button>
+      </td>
+    </tr>
+  </table>
+ 
+
+
+</div>

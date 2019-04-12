@@ -1,0 +1,89 @@
+.appFormHead {
+    position: absolute;
+    top: 193px;
+    background-color: #b92454;
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+
+.formBdy {
+    position: absolute;
+    top: 247px;
+    width: 100%;
+}
+
+table.righttab {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+table.payentttab {
+    position: absolute;
+    top: 123px;
+}
+
+
+td.slno {
+    width: 10%;
+    text-align: center;
+}
+
+td.formlablesec {
+    width: 40%;
+    padding-left: 34px;
+}
+
+td.formValesec {
+    width: 50%;
+}
+
+.togledate {
+    position: absolute;
+    top: 40px;
+    left: 482px;
+}
+
+td.paySlno {
+    width: 20%;
+    text-align: center;
+
+}
+
+td.payVal{
+    width: 12%;
+}
+
+td.payBal {
+    width: 12%;
+    padding-left: 18px;
+}
+td.payBalAmo {
+    width: 12%;
+}
+td.payDate {
+    width: 24%;
+}
+
+.paytogledate {
+    position: absolute;
+    margin-top: -38px;
+    left: 595px;
+}
+
+.lastAddlable{
+    position: absolute;
+    right: 54px;
+    margin-top: 9px;
+}
+
+.addtBtn {
+    background-color: #a7a7a7;
+    width: 41px;
+}
+
+tr.lastAddRow {
+    text-align: right;
+    position: relative;
+}
