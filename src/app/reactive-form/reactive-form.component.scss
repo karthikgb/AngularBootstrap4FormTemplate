@@ -37,4 +37,32 @@ img.profilePic {
     border-style: groove;
 }
 
+.appFormHead {
+    position: absolute;
+    top: 193px;
+    background-color: #b92454;
+    color: white;
+    width: 100%;
+}
 
+h4.headerformlable {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    pointer-events: none;
+}
+
+.vavbtn {
+    float: left;
+    padding: 3px;
+    margin: 2px;
+    cursor: pointer;
+    background-color: #6e6c6c;
+    box-shadow: 0px 0px 0px 1px #ffffff;
+}
+
+.vavbtn:hover {
+    background-color: #ddd469;
+    color: #000000;
+    
+}

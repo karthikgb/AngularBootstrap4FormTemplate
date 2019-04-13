@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonServiceService } from 'src/app/services/common-service.service';
+import { IStudentModel } from 'src/app/models/config-model';
 
 @Component({
   selector: 'app-payment',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private commonServiceService:CommonServiceService) { }
   Courses = [
     { value: 'CBTC' },
     { value: 'DISM' },
@@ -36,8 +38,14 @@ export class PaymentComponent implements OnInit {
     { 'slno': '1', 'Amount': 100, 'Date': '' },
     { 'slno': '2', 'Amount': 200, 'Date': '' }
   ]
+  studentModel:IStudentModel;
 
   ngOnInit() {
+    if(this.commonServiceService.currentViewStudent == null){
+      this.studentModel = this.commonServiceService.emptyModel ;
+    } else {
+      this.studentModel = this.commonServiceService.currentViewStudent ;
+    }
   }
 
   addNew(){

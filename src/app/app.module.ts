@@ -10,6 +10,7 @@ import {MatDatepickerModule,MatNativeDateModule} from '@angular/material';
 import { FormDetailsComponent } from './reactive-form/form-details/form-details.component';
 import { PaymentComponent } from './reactive-form/payment/payment.component';
 import { FormsModule } from '@angular/forms';
+import { AllEnrollmentComponent } from './reactive-form/all-enrollment/all-enrollment.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FormsModule } from '@angular/forms';
     AboutUsComponent,
     FormDetailsComponent,
     PaymentComponent,
+    AllEnrollmentComponent,
   ],
   imports: [
     BrowserModule,

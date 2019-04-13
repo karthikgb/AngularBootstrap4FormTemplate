@@ -1,14 +1,10 @@
-<div class="appFormHead">
-  <h4 class="headerformlable">Payment Details</h4>
-</div>
-
 <div class="formBdy">
   <table class="lefttab" style="width:50%">
     <tr>
       <td class="slno">1.</td>
       <td class="formlablesec">Student Name</td>
       <td class="formValesec">
-        <input type="text" class="form-control inputag">
+        <input  [(ngModel)]="studentModel.Name" type="text" class="form-control inputag">
       </td>
     </tr>
 
@@ -16,7 +12,7 @@
       <td class="slno">2.</td>
       <td class="formlablesec">Date Of Admission</td>
       <td class="formValesec">
-        <input matInput class="form-control inputag" [matDatepicker]="picker" placeholder="Choose a date">
+        <input  [(ngModel)]="studentModel.DateOfAdmission" matInput class="form-control inputag" [matDatepicker]="picker" placeholder="Choose a date">
         <mat-datepicker-toggle class="togledate" matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </td>
@@ -28,7 +24,7 @@
       <td class="slno">3.</td>
       <td class="formlablesec">Courses</td>
       <td class="formValesec">
-        <select class="form-control inputag" id="sel1">
+        <select [(ngModel)]="studentModel.Courses" class="form-control inputag" id="sel1">
           <option *ngFor="let Cour of Courses"> {{Cour.value}}</option>
         </select>
       </td>
@@ -37,7 +33,7 @@
       <td class="slno">4.</td>
       <td class="formlablesec">Fees</td>
       <td class="formValesec">
-        <select class="form-control inputag" id="sel1">
+        <select  [(ngModel)]="studentModel.Fees" class="form-control inputag" id="sel1">
           <option *ngFor="let fee of Fees"> {{fee.value}}</option>
         </select>
       </td>

@@ -1,0 +1,26 @@
+<div class="formBdy">
+
+  <table class="alltable table table-hover">
+    <thead>
+      <tr>
+        <th>TempADMNo</th>
+        <th>Name</th>
+        <th>Courses</th>
+        <th>Total Fees</th>
+        <th>Date ofAdmission</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody class="tblbdy">
+      <tr *ngFor="let student of students">
+        <td>{{student.TempADMNo}}</td>
+        <td>{{student.Name}}</td>
+        <td>{{student.Courses}}</td>
+        <td>{{student.Fees}}</td>
+        <td>{{student.DateOfAdmission | date : 'MMM d, y'}}</td>
+        <td><button class="viewBtn" (click)="displayStudent(student)">view</button></td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>

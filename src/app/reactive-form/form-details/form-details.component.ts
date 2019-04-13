@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnDestroy } from '@angular/core';
+import { IStudentModel } from 'src/app/models/config-model';
+import { CommonServiceService } from 'src/app/services/common-service.service';
 
 @Component({
   selector: 'app-form-details',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private commonServiceService:CommonServiceService) { }
   Category = [
     {value: 'SC'},
     {value: 'ST'},
@@ -32,14 +34,14 @@ export class FormDetailsComponent implements OnInit {
   ];
 
   Fees = [
-    {value: '995'},
-    {value: '1495'},
-    {value: '1795'},
-    {value: '1995'},
-    {value: '2995'},
-    {value: '2995'},
-    {value: '5995'},
-    {value: '6495'}
+    {value: 995},
+    {value: 1495},
+    {value: 1795},
+    {value: 1995},
+    {value: 2995},
+    {value: 2995},
+    {value: 5995},
+    {value: 6495}
     
   ]
 
@@ -53,8 +55,23 @@ export class FormDetailsComponent implements OnInit {
     {value: 'Others'}
   ]
 
+  studentModel:IStudentModel;
+
+
 
   ngOnInit() {
+    if(this.commonServiceService.currentViewStudent == null){
+      this.studentModel = this.commonServiceService.emptyModel ;
+    } else {
+      this.studentModel = this.commonServiceService.currentViewStudent ;
+    }
+
   }
+
+  ngOnDestroy(){
+  }
+
+
+  
 
 }
