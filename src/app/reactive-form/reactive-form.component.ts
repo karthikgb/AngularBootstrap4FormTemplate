@@ -16,7 +16,7 @@ export class ReactiveFormComponent implements OnInit {
 
   newClick(){
     this.commonServiceService.currentViewStudent = null;
-    this.router.navigate(['Form']);
+    // this.router.navigate(['Form']);
     setTimeout(() => {
     this.router.navigate(['Form','New']);
     }, 100);

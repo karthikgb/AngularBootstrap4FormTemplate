@@ -1,6 +1,9 @@
-import { Component, OnInit,OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IStudentModel } from 'src/app/models/config-model';
 import { CommonServiceService } from 'src/app/services/common-service.service';
+declare let printThis;
+declare let $;
+
 
 @Component({
   selector: 'app-form-details',
@@ -9,69 +12,73 @@ import { CommonServiceService } from 'src/app/services/common-service.service';
 })
 export class FormDetailsComponent implements OnInit {
 
-  constructor(private commonServiceService:CommonServiceService) { }
+  constructor(private commonServiceService: CommonServiceService) { }
   Category = [
-    {value: 'SC'},
-    {value: 'ST'},
-    {value: 'C1'},
-    {value: '2A'},
-    {value: '2B'},
-    {value: '3A'},
-    {value: '3B'},
-    {value: 'GM'}
+    { value: 'SC' },
+    { value: 'ST' },
+    { value: 'C1' },
+    { value: '2A' },
+    { value: '2B' },
+    { value: '3A' },
+    { value: '3B' },
+    { value: 'GM' }
   ];
 
 
   Courses = [
-    {value: 'CBTC'},
-    {value: 'DISM'},
-    {value: 'DIOM'},
-    {value: 'CAP'},
-    {value: 'DAP'},
-    {value: 'DTP'},
-    {value: 'CTTC'}, 
-    {value: 'PGDCA'}
+    { value: 'CBTC' },
+    { value: 'DISM' },
+    { value: 'DIOM' },
+    { value: 'CAP' },
+    { value: 'DAP' },
+    { value: 'DTP' },
+    { value: 'CTTC' },
+    { value: 'PGDCA' }
   ];
 
   Fees = [
-    {value: 995},
-    {value: 1495},
-    {value: 1795},
-    {value: 1995},
-    {value: 2995},
-    {value: 2995},
-    {value: 5995},
-    {value: 6495}
-    
+    { value: 995 },
+    { value: 1495 },
+    { value: 1795 },
+    { value: 1995 },
+    { value: 2995 },
+    { value: 2995 },
+    { value: 5995 },
+    { value: 6495 }
+
   ]
 
 
   Eligibility = [
-    {value: '5th to 10th'},
-    {value: 'SSLC'},
-    {value: 'PUC'},
-    {value: 'DEGREE'},
-    {value: 'PG'},
-    {value: 'Others'}
+    { value: '5th to 10th' },
+    { value: 'SSLC' },
+    { value: 'PUC' },
+    { value: 'DEGREE' },
+    { value: 'PG' },
+    { value: 'Others' }
   ]
 
-  studentModel:IStudentModel;
+  studentModel: IStudentModel;
 
 
 
   ngOnInit() {
-    if(this.commonServiceService.currentViewStudent == null){
-      this.studentModel = this.commonServiceService.emptyModel ;
+    if (this.commonServiceService.currentViewStudent == null) {
+      this.studentModel = this.commonServiceService.emptyModel;
     } else {
-      this.studentModel = this.commonServiceService.currentViewStudent ;
+      this.studentModel = this.commonServiceService.currentViewStudent;
     }
 
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
   }
 
 
-  
+  OpenPdf() {
+ 
+  }
+
+
 
 }

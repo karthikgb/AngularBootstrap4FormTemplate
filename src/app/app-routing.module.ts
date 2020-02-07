@@ -8,6 +8,11 @@ import { AllEnrollmentComponent } from './reactive-form/all-enrollment/all-enrol
 
 const routes: Routes = [
   {
+    'path': '',
+    'redirectTo': 'Form/ALL',
+    'pathMatch': 'full'
+  },
+  {
     'path': 'Form',
     'component': ReactiveFormComponent,
     'children': [
@@ -20,7 +25,7 @@ const routes: Routes = [
         'component': PaymentComponent
       },
       {
-        'path':'ALL',
+        'path': 'ALL',
         'component': AllEnrollmentComponent
       }
     ]
@@ -29,15 +34,16 @@ const routes: Routes = [
     'path': 'aboutUs',
     'component': AboutUsComponent
   },
+
   {
-    'path': '',
+    "path": '**',
     'redirectTo': 'Form/ALL',
     'pathMatch': 'full'
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{ useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

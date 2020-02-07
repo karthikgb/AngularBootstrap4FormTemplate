@@ -1,5 +1,5 @@
-<div class="formBdy">
-  <table class="lefttab" style="width:50%">
+<div class="formBdy row">
+  <table class="lefttab1 col-6" style="width:50%">
     <tr>
       <td class="slno">1.</td>
       <td class="formlablesec">Date Of Admission</td>
@@ -69,7 +69,7 @@
     </tr>
 
   </table>
-  <table class="righttab" style="width:48%">
+  <table class="righttab1 col-6" style="width:50%">
 
     <tr>
       <td class="slno">10.</td>
@@ -136,9 +136,10 @@
     <tr>
       <td class="slno">18.</td>
       <td class="formlablesec">Payment Status</td>
-      <td class="formValesec">
-        <button class="btn nextBtn" type="button">Save</button>
-        <button class="btn nextBtn" routerLink="/Form/Payment" type="button">Payment--></button>
+      <td class="formValesec col-12">
+        <button class="btn nextBtn col-3" type="button">Save</button>
+        <button class="btn nextBtn col-4" routerLink="/Form/Payment" type="button">Payment</button>
+        <button (click)="OpenPdf()" class="btn nextBtn col-3"  type="button">PDF</button>
       </td>
     </tr>
   </table>

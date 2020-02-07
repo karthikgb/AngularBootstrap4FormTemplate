@@ -1,27 +1,34 @@
-<div class="fullformBody">
-  <div>
-    <h4 class="headerlable">NAVA BHARAT SELF EMPLOYMENT SCHEME</h4>
-  </div>
-  <div>
-    <div>
-      <img class="institutelogo" src="../assets/icons/institutelogo.jpg">
-    </div>
-    <div class="example-app-name">
-      <h4>NAVA BHARAT EDUCATION & RURAL</h4>
-      <h4> DEVELOPMENT SOCIETY (R)</h4>
-      <h6> #11, Basava Nilaya, Belland Building Kavalpet Oni</h6>
-      <h6>Opp: Dr.A.C. Kabbin Hospital</h6>
-      <h5>SAUNDATTI-591126. Dist: Belagavi</h5>
-    </div>
-    <div class="profilePicBorder">
-      <img class="profilePic" src="../assets/icons/profile.png">
-    </div>
-  </div>
-  <div class="appFormHead">
-      <div class="vavbtn allStu" routerLink="/Form/ALL">ALL Students</div>
-      <div class="vavbtn newStu" (click)="newClick()">New</div>
-      <h4 class="headerformlable">-: APPLICATION FORM :-</h4>
-    </div>
-  <router-outlet></router-outlet>
 
-</div>
+
+  <div class="card-body">
+    <div class="fullformBody card">
+      <div>
+        <h4 class="headerlable">NAVA BHARAT SELF EMPLOYMENT SCHEME</h4>
+      </div>
+      <div class="row"> 
+        <div class="col-3 institutelogobdy">
+          <img class="institutelogo" src="../assets/icons/institutelogo.jpg">
+        </div>
+        <div class="example-app-name col-6">
+          <h4>NAVA BHARAT EDUCATION & RURAL</h4>
+          <h4> DEVELOPMENT SOCIETY (R)</h4>
+          <h6> #11, Basava Nilaya, Belland Building Kavalpet Oni</h6>
+          <h6>Opp: Dr.A.C. Kabbin Hospital</h6>
+          <h5>SAUNDATTI-591126. Dist: Belagavi</h5>
+        </div>
+        <div class="profilePicBorder col-3">
+          <img class="profilePic" src="../assets/icons/profile.png">
+        </div>
+      </div>
+      <div class="appFormHead">
+          <div class="vavbtn allStu" routerLink="/Form/ALL">ALL Students</div>
+          <div class="vavbtn newStu" (click)="newClick()">New</div>
+          <div class="headerformlablebdy">
+            <h4 class="headerformlable">-: APPLICATION FORM :-</h4>
+          </div>
+          
+        </div>
+      <router-outlet></router-outlet>
+    
+    </div>
+  </div>
