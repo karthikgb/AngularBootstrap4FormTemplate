@@ -1,11 +1,10 @@
-
-
-  <div class="card-body">
-    <div class="fullformBody card">
-      <div>
-        <h4 class="headerlable">NAVA BHARAT SELF EMPLOYMENT SCHEME</h4>
+<div class="card-body">
+  <div class="fullformBody card">
+    <div class="main_head_bdy">
+      <div class="headerlable">
+        <h4>NAVA BHARAT SELF EMPLOYMENT SCHEME</h4>
       </div>
-      <div class="row"> 
+      <div class="row head_bdy">
         <div class="col-3 institutelogobdy">
           <img class="institutelogo" src="../assets/icons/institutelogo.jpg">
         </div>
@@ -21,14 +20,15 @@
         </div>
       </div>
       <div class="appFormHead">
-          <div class="vavbtn allStu" routerLink="/Form/ALL">ALL Students</div>
-          <div class="vavbtn newStu" (click)="newClick()">New</div>
-          <div class="headerformlablebdy">
-            <h4 class="headerformlable">-: APPLICATION FORM :-</h4>
-          </div>
-          
+        <div class="vavbtn allStu" routerLink="/Form/ALL">ALL Students</div>
+        <div class="vavbtn newStu" (click)="newClick()">New</div>
+        <div class="headerformlablebdy">
+          <h4 class="headerformlable">-: APPLICATION FORM :-</h4>
         </div>
-      <router-outlet></router-outlet>
-    
+  
+      </div>
     </div>
+    <router-outlet></router-outlet>
+
   </div>
+</div>

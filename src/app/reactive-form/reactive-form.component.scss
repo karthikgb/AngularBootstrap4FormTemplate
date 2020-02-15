@@ -1,10 +1,20 @@
 .fullformBody {
     box-shadow: 0 5px 20px 2px rgba(0,0,0,0.1);
+    padding: 4px;
 }
 
-h4.headerlable {
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.row.head_bdy {
+    margin-top: 5px;
+}
+
+.headerlable {
     text-align: center;
-    background-color: #b92454;
+    background-color: #002147;
     color: white;
 }
 
@@ -30,7 +40,7 @@ img.profilePic {
 }
 
 .appFormHead {
-    background-color: #b92454;
+    background-color: #002147;
     color: #fff;
     width: 100%;
     height: 35px;
@@ -41,6 +51,7 @@ h4.headerformlable {
     text-align: center;
     width: 100%;
     pointer-events: none;
+    margin-left: -10px;
 }
 
 .vavbtn {

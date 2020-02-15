@@ -137,9 +137,9 @@
       <td class="slno">18.</td>
       <td class="formlablesec">Payment Status</td>
       <td class="formValesec col-12">
-        <button class="btn nextBtn col-3" type="button">Save</button>
+        <button (click)="save()" class="btn nextBtn col-3" type="button">Save</button>
         <button class="btn nextBtn col-4" routerLink="/Form/Payment" type="button">Payment</button>
-        <button (click)="OpenPdf()" class="btn nextBtn col-3"  type="button">PDF</button>
+        <button (click)="OpenPdf()" class="btn nextBtn col-3"  type="button"  data-toggle="modal" data-target="#myModal">PDF</button>
       </td>
     </tr>
   </table>
@@ -147,3 +147,28 @@
 
 
 </div>
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+   
+      <!-- Modal body -->
+      <div class="modal-body iframeContainer">
+       
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer" >
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+

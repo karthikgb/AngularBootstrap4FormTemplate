@@ -3,6 +3,10 @@ import * as XLSX from 'xlsx';
 import * as FileSaver from 'file-saver';
 import { IStudentModel } from '../models/config-model';
 import { Observable, Observer } from 'rxjs'
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
 
 
 const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
@@ -12,8 +16,9 @@ const EXCEL_EXTENSION = '.xlsx';
   providedIn: 'root'
 })
 export class CommonServiceService {
+  pdfMake: pdfMake;
 
-  currentViewStudent:IStudentModel= null ;
+  currentViewStudent: IStudentModel = null;
   emptyModel = {
     DateOfAdmission: new Date(),
     TempADMNo: null,
@@ -24,18 +29,23 @@ export class CommonServiceService {
     ContactNo: null,
     AlternateNo: null,
     CurrentAddress: null,
-    Courses:null,
+    Courses: null,
     EligibilityQualification: null,
     SSLCRegNo: null,
     AdhaarNo: null,
     Category: null,
     Caste: null,
     Fees: null,
-    PermanentAddress:null,
+    PermanentAddress: null,
     PaymentStatus: {},
   }
 
-  constructor() { }
+  Allstudents: Array<IStudentModel> = null;
+
+  constructor() {
+    this.pdfMake = pdfMake;
+
+  }
 
   public exportAsExcelFile(json: any[], excelFileName: string): void {
 
@@ -54,7 +64,7 @@ export class CommonServiceService {
     FileSaver.saveAs(data, fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION);
   }
 
-  public getAllStudentEnrollment():Observable<Array<IStudentModel>> {
+  public getAllStudentEnrollment(): Observable<Array<IStudentModel>> {
     var students: Array<IStudentModel> = [{
       DateOfAdmission: new Date(2019, 4, 10),
       TempADMNo: 123445,
@@ -65,7 +75,7 @@ export class CommonServiceService {
       ContactNo: 9856985685,
       AlternateNo: 565235626,
       CurrentAddress: 'jhgdjhagdjhgjahjgh jgj jh',
-      Courses:'DISM',
+      Courses: 'DISM',
       EligibilityQualification: 'DEGREE',
       SSLCRegNo: 'asassa123',
       AdhaarNo: 12302545620,
@@ -85,7 +95,7 @@ export class CommonServiceService {
       ContactNo: 234234234324,
       AlternateNo: 32423423,
       CurrentAddress: 'jhgdjhagdjhgjahjgh jgj jh',
-      Courses:'CBTC',
+      Courses: 'CBTC',
       EligibilityQualification: 'DEGREE',
       SSLCRegNo: 'asassa123',
       AdhaarNo: 234324,
@@ -105,7 +115,7 @@ export class CommonServiceService {
       ContactNo: 5676756756,
       AlternateNo: 565235626,
       CurrentAddress: 'jhgdjhagdjhgjahjgh jgj jh',
-      Courses:'CBTC',
+      Courses: 'CBTC',
       EligibilityQualification: 'DEGREE',
       SSLCRegNo: 'asassa123',
       AdhaarNo: 12302545620,
@@ -125,7 +135,7 @@ export class CommonServiceService {
       ContactNo: 9856985685,
       AlternateNo: 565235626,
       CurrentAddress: 'jhgdjhagdjhgjahjgh jgj jh',
-      Courses:'CBTC',
+      Courses: 'CBTC',
       EligibilityQualification: 'DEGREE',
       SSLCRegNo: 'asassa123',
       AdhaarNo: 12302545620,
@@ -145,7 +155,7 @@ export class CommonServiceService {
       ContactNo: 9856985685,
       AlternateNo: 565235626,
       CurrentAddress: 'jhgdjhagdjhgjahjgh jgj jh',
-      Courses:'DISM',
+      Courses: 'DISM',
       EligibilityQualification: 'DEGREE',
       SSLCRegNo: 'asassa123',
       AdhaarNo: 12302545620,
@@ -165,7 +175,7 @@ export class CommonServiceService {
       ContactNo: 9856985685,
       AlternateNo: 565235626,
       CurrentAddress: 'jhgdjhagdjhgjahjgh jgj jh',
-      Courses:'CBTC',
+      Courses: 'CBTC',
       EligibilityQualification: 'DEGREE',
       SSLCRegNo: 'asassa123',
       AdhaarNo: 12302545620,
@@ -178,9 +188,22 @@ export class CommonServiceService {
     ];
 
     return Observable.create((observer) => {
-      observer.next(students);
+      if (this.Allstudents == null) {
+        this.Allstudents = students;
+      }
+      observer.next(this.Allstudents);
       observer.complete();
     })
+
+
+  }
+
+
+  public addNewStudent(student: IStudentModel) {
+    var tempStudent = this.Allstudents.filter(s => s.TempADMNo == student.TempADMNo);
+    if (tempStudent.length == 0) {
+      this.Allstudents.push(student)
+    }
   }
 
 }

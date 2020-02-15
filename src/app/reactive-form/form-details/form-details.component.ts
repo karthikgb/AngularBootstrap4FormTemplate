@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IStudentModel } from 'src/app/models/config-model';
 import { CommonServiceService } from 'src/app/services/common-service.service';
+import {Route, Router} from '@angular/router'
 declare let printThis;
 declare let $;
 
@@ -12,7 +13,7 @@ declare let $;
 })
 export class FormDetailsComponent implements OnInit {
 
-  constructor(private commonServiceService: CommonServiceService) { }
+  constructor(private commonServiceService: CommonServiceService, private router:Router) { }
   Category = [
     { value: 'SC' },
     { value: 'ST' },
@@ -76,7 +77,36 @@ export class FormDetailsComponent implements OnInit {
 
 
   OpenPdf() {
- 
+    var dd = {
+      content: [
+        'First paragraph',
+        'kkk'
+      ]
+    }
+
+
+    const pdfDocGenerator =  this.commonServiceService.pdfMake.createPdf(dd);
+    pdfDocGenerator.getDataUrl((dataUrl) => {
+
+      const targetElement = document.querySelector('.iframeContainer');
+      while (targetElement.firstChild) {
+        targetElement.removeChild(targetElement.firstChild);
+      }
+
+      const iframe = document.createElement('iframe');
+      iframe.src = dataUrl;
+      iframe.width = "100%";
+      iframe.height = (window.innerHeight -100)+ 'px';
+      iframe.frameBorder = "0";
+      iframe.scrolling = "no";
+      targetElement.appendChild(iframe);
+    });
+  }
+
+
+  save(){
+    this.commonServiceService.addNewStudent(this.studentModel);
+    this.router.navigate(['/Form/ALL']);
   }
 
 

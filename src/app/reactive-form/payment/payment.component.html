@@ -1,10 +1,10 @@
-<div class="formBdy">
-  <table class="lefttab" style="width:50%">
+<div class="formBdy row">
+  <table class="lefttab col-6">
     <tr>
       <td class="slno">1.</td>
       <td class="formlablesec">Student Name</td>
       <td class="formValesec">
-        <input  [(ngModel)]="studentModel.Name" type="text" class="form-control inputag">
+        <input [(ngModel)]="studentModel.Name" type="text" class="form-control inputag">
       </td>
     </tr>
 
@@ -12,14 +12,18 @@
       <td class="slno">2.</td>
       <td class="formlablesec">Date Of Admission</td>
       <td class="formValesec">
-        <input  [(ngModel)]="studentModel.DateOfAdmission" matInput class="form-control inputag" [matDatepicker]="picker" placeholder="Choose a date">
+        <div class="row" style="margin: 0px !important;">
+          <input [(ngModel)]="studentModel.DateOfAdmission" matInput class="form-control inputag" [matDatepicker]="picker"
+          placeholder="Choose a date">
         <mat-datepicker-toggle class="togledate" matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
+        </div>
+    
       </td>
     </tr>
 
   </table>
-  <table class="righttab" style="width:48%">
+  <table class="righttab col-6">
     <tr>
       <td class="slno">3.</td>
       <td class="formlablesec">Courses</td>
@@ -33,35 +37,49 @@
       <td class="slno">4.</td>
       <td class="formlablesec">Fees</td>
       <td class="formValesec">
-        <select  [(ngModel)]="studentModel.Fees" class="form-control inputag" id="sel1">
+        <select [(ngModel)]="studentModel.Fees" class="form-control inputag" id="sel1">
           <option *ngFor="let fee of Fees"> {{fee.value}}</option>
         </select>
       </td>
     </tr>
   </table>
-  <table class="payentttab" style="width:60%">
-    <tr>
-      <div *ngFor="let paid of paidAmount;let index = index">
-        <td class="paySlno">Payment {{paid.slno}} Paid</td>
-        <td class="payVal">
+  <h2>Payment :</h2>
+  <table class="payentttab col-12">
+    <tr class="row" *ngFor="let paid of paidAmount;let index = index">
+
+      <div class="col-4">
+        <td class="paySlno ">{{index + 1}}. &nbsp; &nbsp; Payment Paid</td>
+        <td class="payVal ">
           <input type="text" [(ngModel)]='paid.Amount' class="form-control">
         </td>
-        <td class="payBal">Balance </td>
-        <td class="payBalAmo">
-          <input type="text"  class="form-control">
+      </div>
+      <div class="col-4">
+        <td class="payBal ">Balance </td>
+        <td class="payBalAmo ">
+          <input type="text" class="form-control">
         </td>
-        <td class="payDate">
-          <input matInput class="form-control inputag" [matDatepicker]="picker" placeholder="Choose a date">
-          <mat-datepicker-toggle class="paytogledate" matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
+        <td class="payDate ">
+          <div class="row">
+            <input matInput class="form-control inputag" [matDatepicker]="picker" placeholder="Choose a date">
+
+            <mat-datepicker-toggle class="paytogledate" matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </div>
+
         </td>
       </div>
 
+
+
+
     </tr>
     <tr class="lastAddRow">
+      <div class="lastAddRowws row">
         <h6 class="lastAddlable">Add new Payment</h6>
         <button class="btn addtBtn" (click)="addNew()" type="button">+</button>
-      <tr>
+      </div>
+
+    <tr>
   </table>
 
 </div>
