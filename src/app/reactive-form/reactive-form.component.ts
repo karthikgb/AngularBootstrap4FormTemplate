@@ -9,7 +9,7 @@ import { CommonServiceService } from '../services/common-service.service';
 })
 export class ReactiveFormComponent implements OnInit {
 
-  constructor(private router: Router, private commonServiceService: CommonServiceService) { }
+  constructor(private router: Router, public commonServiceService: CommonServiceService) { }
 
   ngOnInit() {
     // this.router.url
