@@ -11,6 +11,8 @@ import { FormDetailsComponent } from './reactive-form/form-details/form-details.
 import { PaymentComponent } from './reactive-form/payment/payment.component';
 import { FormsModule } from '@angular/forms';
 import { AllEnrollmentComponent } from './reactive-form/all-enrollment/all-enrollment.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { AllEnrollmentComponent } from './reactive-form/all-enrollment/all-enrol
     BrowserAnimationsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

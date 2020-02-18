@@ -16,8 +16,10 @@
           <h5>SAUNDATTI-591126. Dist: Belagavi</h5>
         </div>
         <div class="profilePicBorder col-3">
-          <img class="profilePic" src="../assets/icons/profile.png">
+          <img *ngIf="commonServiceService.studentPhoto == null" class="profilePic" src="../assets/icons/profile.png">
+          <img *ngIf="commonServiceService.studentPhoto" class="img-thumbnail profilePic"  [src]="commonServiceService.studentPhoto">
         </div>
+        
       </div>
       <div class="appFormHead">
         <div class="vavbtn allStu" routerLink="/Form/ALL">ALL Students</div>

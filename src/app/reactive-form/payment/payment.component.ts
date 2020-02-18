@@ -41,11 +41,11 @@ export class PaymentComponent implements OnInit {
   studentModel:IStudentModel;
 
   ngOnInit() {
-    if(this.commonServiceService.currentViewStudent == null){
-      this.studentModel = this.commonServiceService.emptyModel ;
-    } else {
-      this.studentModel = this.commonServiceService.currentViewStudent ;
-    }
+    // if(this.commonServiceService.currentViewStudent == null){
+    //   this.studentModel = this.commonServiceService.emptyModel ;
+    // } else {
+    //   this.studentModel = this.commonServiceService.currentViewStudent ;
+    // }
   }
 
   addNew(){

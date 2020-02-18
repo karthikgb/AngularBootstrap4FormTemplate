@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import{ Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { CommonServiceService } from '../services/common-service.service';
 
 @Component({
@@ -9,18 +9,22 @@ import { CommonServiceService } from '../services/common-service.service';
 })
 export class ReactiveFormComponent implements OnInit {
 
-  constructor(private router: Router,private commonServiceService:CommonServiceService) { }
+  constructor(private router: Router, private commonServiceService: CommonServiceService) { }
 
   ngOnInit() {
+    // this.router.url
+    this.router.events.subscribe((s) => {
+      if (s instanceof NavigationEnd) {
+         if( s.urlAfterRedirects == "/Form/ALL"){
+            this.commonServiceService.studentPhoto = null;
+         }
+      }
+
+    });
   }
 
-  newClick(){
-    this.commonServiceService.currentViewStudent = null;
-    // this.router.navigate(['Form']);
-    setTimeout(() => {
-    this.router.navigate(['Form','New']);
-    }, 100);
-
+  newClick() {
+    this.router.navigate(['Form', 'New']);
   }
 
 }

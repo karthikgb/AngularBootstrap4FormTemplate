@@ -2,7 +2,8 @@
 
 .nextBtn {
     background-color: #a7a7a7;
-    margin-left: 14px;
+    margin-right: 1rem;
+    margin-top: 5px;
     text-align: center;
 }
 
@@ -66,4 +67,14 @@ iframe {
 
 .modal-footer {
     padding: 0px;
+}
+
+input#myfile {
+    border: 1px solid #ced4da;
+    padding: 5px;
+}
+
+.alertMsgg {
+    text-align: center;
+    color: #c13a3a;
 }

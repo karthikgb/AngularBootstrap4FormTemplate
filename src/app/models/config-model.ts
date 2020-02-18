@@ -18,5 +18,6 @@ export interface IStudentModel {
     Fees: number;
     PermanentAddress: string;
     PaymentStatus: any;
+    photo:any;
 }
 

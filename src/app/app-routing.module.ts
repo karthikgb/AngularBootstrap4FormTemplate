@@ -21,6 +21,10 @@ const routes: Routes = [
         'component': FormDetailsComponent
       },
       {
+        'path': 'New/:id',
+        'component': FormDetailsComponent
+      },
+      {
         'path': 'Payment',
         'component': PaymentComponent
       },
@@ -34,16 +38,14 @@ const routes: Routes = [
     'path': 'aboutUs',
     'component': AboutUsComponent
   },
-
   {
     "path": '**',
-    'redirectTo': 'Form/ALL',
-    'pathMatch': 'full'
+    'redirectTo': 'Form/ALL'
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{ useHash: true })],
+  imports: [RouterModule.forRoot(routes,{ useHash: false })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

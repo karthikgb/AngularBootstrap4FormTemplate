@@ -5,6 +5,9 @@ import { IStudentModel } from '../models/config-model';
 import { Observable, Observer } from 'rxjs'
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 
@@ -18,7 +21,8 @@ const EXCEL_EXTENSION = '.xlsx';
 export class CommonServiceService {
   pdfMake: pdfMake;
 
-  currentViewStudent: IStudentModel = null;
+  studentPhoto = null;
+
   emptyModel = {
     DateOfAdmission: new Date(),
     TempADMNo: null,
@@ -38,11 +42,12 @@ export class CommonServiceService {
     Fees: null,
     PermanentAddress: null,
     PaymentStatus: {},
+    photo:null
   }
 
   Allstudents: Array<IStudentModel> = null;
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.pdfMake = pdfMake;
 
   }
@@ -65,141 +70,44 @@ export class CommonServiceService {
   }
 
   public getAllStudentEnrollment(): Observable<Array<IStudentModel>> {
-    var students: Array<IStudentModel> = [{
-      DateOfAdmission: new Date(2019, 4, 10),
-      TempADMNo: 123445,
-      Name: 'Mantu',
-      FatherName: 'kiran',
-      MotherName: 'roopa',
-      DateOfBirth: new Date(2019, 4, 10),
-      ContactNo: 9856985685,
-      AlternateNo: 565235626,
-      CurrentAddress: 'jhgdjhagdjhgjahjgh jgj jh',
-      Courses: 'DISM',
-      EligibilityQualification: 'DEGREE',
-      SSLCRegNo: 'asassa123',
-      AdhaarNo: 12302545620,
-      Category: '2B',
-      Caste: 'Hindu',
-      Fees: 5995,
-      PermanentAddress: 'sdfsdfsfd dsf sd',
-      PaymentStatus: {},
-    },
-    {
-      DateOfAdmission: new Date(2019, 4, 10),
-      TempADMNo: 234234,
-      Name: 'karthik',
-      FatherName: 'kiran',
-      MotherName: 'roopa',
-      DateOfBirth: new Date(2019, 4, 10),
-      ContactNo: 234234234324,
-      AlternateNo: 32423423,
-      CurrentAddress: 'jhgdjhagdjhgjahjgh jgj jh',
-      Courses: 'CBTC',
-      EligibilityQualification: 'DEGREE',
-      SSLCRegNo: 'asassa123',
-      AdhaarNo: 234324,
-      Category: '2B',
-      Caste: 'Hindu',
-      Fees: 5995,
-      PermanentAddress: 'sdfsdfsfd dsf sd',
-      PaymentStatus: {},
-    },
-    {
-      DateOfAdmission: new Date(2019, 4, 10),
-      TempADMNo: 5656656,
-      Name: 'rakesh',
-      FatherName: 'kiran',
-      MotherName: 'roopa',
-      DateOfBirth: new Date(2019, 4, 10),
-      ContactNo: 5676756756,
-      AlternateNo: 565235626,
-      CurrentAddress: 'jhgdjhagdjhgjahjgh jgj jh',
-      Courses: 'CBTC',
-      EligibilityQualification: 'DEGREE',
-      SSLCRegNo: 'asassa123',
-      AdhaarNo: 12302545620,
-      Category: '2B',
-      Caste: 'Hindu',
-      Fees: 5995,
-      PermanentAddress: 'sdfsdfsfd dsf sd',
-      PaymentStatus: {},
-    },
-    {
-      DateOfAdmission: new Date(2019, 4, 10),
-      TempADMNo: 123446,
-      Name: 'kiran',
-      FatherName: 'kiran',
-      MotherName: 'roopa',
-      DateOfBirth: new Date(2019, 4, 10),
-      ContactNo: 9856985685,
-      AlternateNo: 565235626,
-      CurrentAddress: 'jhgdjhagdjhgjahjgh jgj jh',
-      Courses: 'CBTC',
-      EligibilityQualification: 'DEGREE',
-      SSLCRegNo: 'asassa123',
-      AdhaarNo: 12302545620,
-      Category: '2B',
-      Caste: 'Hindu',
-      Fees: 5995,
-      PermanentAddress: 'sdfsdfsfd dsf sd',
-      PaymentStatus: {},
-    },
-    {
-      DateOfAdmission: new Date(2019, 4, 10),
-      TempADMNo: 123446,
-      Name: 'Mantu',
-      FatherName: 'kiran',
-      MotherName: 'roopa',
-      DateOfBirth: new Date(2019, 4, 10),
-      ContactNo: 9856985685,
-      AlternateNo: 565235626,
-      CurrentAddress: 'jhgdjhagdjhgjahjgh jgj jh',
-      Courses: 'DISM',
-      EligibilityQualification: 'DEGREE',
-      SSLCRegNo: 'asassa123',
-      AdhaarNo: 12302545620,
-      Category: '2B',
-      Caste: 'Hindu',
-      Fees: 5995,
-      PermanentAddress: 'sdfsdfsfd dsf sd',
-      PaymentStatus: {},
-    },
-    {
-      DateOfAdmission: new Date(2019, 4, 10),
-      TempADMNo: 123446,
-      Name: 'Anil',
-      FatherName: 'kiran',
-      MotherName: 'roopa',
-      DateOfBirth: new Date(2019, 4, 10),
-      ContactNo: 9856985685,
-      AlternateNo: 565235626,
-      CurrentAddress: 'jhgdjhagdjhgjahjgh jgj jh',
-      Courses: 'CBTC',
-      EligibilityQualification: 'DEGREE',
-      SSLCRegNo: 'asassa123',
-      AdhaarNo: 12302545620,
-      Category: '2B',
-      Caste: 'Hindu',
-      Fees: 5995,
-      PermanentAddress: 'sdfsdfsfd dsf sd',
-      PaymentStatus: {},
+    if (this.Allstudents == null) {
+      return this.http.get('./assets/tempstudentdata.json').pipe(
+        map((res: any) => {
+          this.Allstudents = <IStudentModel[]>res
+          return this.Allstudents;
+        }
+        )
+      )
+    } else {
+      return Observable.create((observer) => {
+        observer.next(this.Allstudents);
+        observer.complete();
+      })
     }
-    ];
+  }
 
-    return Observable.create((observer) => {
-      if (this.Allstudents == null) {
-        this.Allstudents = students;
-      }
-      observer.next(this.Allstudents);
-      observer.complete();
-    })
+  public getStudent(id) {
+    if (this.Allstudents == null) {
+      return this.getAllStudentEnrollment()
+        .pipe(map(res => {
+          this.Allstudents = <IStudentModel[]>res
+          return this.getstudentFun(id);
+        }))
+    }
+    else {
+      return Observable.create((observer) => {
+        observer.next( this.getstudentFun(id));
+        observer.complete();
+      })
+    }
+  }
 
-
+  private getstudentFun(id){
+    return this.Allstudents.filter(a => a.TempADMNo == id)[0];
   }
 
 
-  public addNewStudent(student: IStudentModel) {
+  public addOrUpdateStudent(student: IStudentModel) {
     var tempStudent = this.Allstudents.filter(s => s.TempADMNo == student.TempADMNo);
     if (tempStudent.length == 0) {
       this.Allstudents.push(student)

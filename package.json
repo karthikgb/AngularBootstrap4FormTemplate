@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -31,6 +31,7 @@
     "express": "4.16.4",
     "file-saver": "2.0.1",
     "font-awesome": "4.7.0",
+    "node-sass": "^4.13.1",
     "path": "0.12.7",
     "pdfmake": "^0.1.64",
     "rxjs": "6.3.3",

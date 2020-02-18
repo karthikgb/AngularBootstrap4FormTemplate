@@ -16,13 +16,12 @@ export class AllEnrollmentComponent implements OnInit {
   ngOnInit() {
     this.commonServiceService.getAllStudentEnrollment().subscribe(data => {
       this.students = data;
-      console.log(data)
     })
   }
 
   displayStudent(student: IStudentModel) {
-    this.commonServiceService.currentViewStudent = student;
-    this.router.navigate(['Form','New']);
+    // this.commonServiceService.currentViewStudent = student;
+    this.router.navigate(['Form','New',student.TempADMNo]);
   }
 
 }

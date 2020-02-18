@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IStudentModel } from 'src/app/models/config-model';
 import { CommonServiceService } from 'src/app/services/common-service.service';
-import {Route, Router} from '@angular/router'
+import { Route, Router, ActivatedRoute, ParamMap } from '@angular/router'
+import { switchMap } from 'rxjs/operators';
 declare let printThis;
 declare let $;
 
@@ -13,7 +14,7 @@ declare let $;
 })
 export class FormDetailsComponent implements OnInit {
 
-  constructor(private commonServiceService: CommonServiceService, private router:Router) { }
+  constructor(private commonServiceService: CommonServiceService, private router: Router, private route: ActivatedRoute) { }
   Category = [
     { value: 'SC' },
     { value: 'ST' },
@@ -59,16 +60,26 @@ export class FormDetailsComponent implements OnInit {
     { value: 'Others' }
   ]
 
-  studentModel: IStudentModel;
-
+  studentModel: IStudentModel = null;
+  CurrentId = null;
 
 
   ngOnInit() {
-    if (this.commonServiceService.currentViewStudent == null) {
-      this.studentModel = this.commonServiceService.emptyModel;
-    } else {
-      this.studentModel = this.commonServiceService.currentViewStudent;
-    }
+    this.route.paramMap.pipe(
+      switchMap((params: ParamMap) => {
+        this.CurrentId = params.get('id')
+        return this.commonServiceService.getStudent(this.CurrentId);
+      }
+      )
+    ).subscribe((studentTemp: IStudentModel) => {
+      if (this.CurrentId == null) {
+        this.studentModel = this.commonServiceService.emptyModel;
+      } else if (studentTemp == null || studentTemp == undefined) {
+        // this.CurrentId = -1;
+      } else {
+        this.studentModel = studentTemp;
+      }
+    })
 
   }
 
@@ -85,7 +96,7 @@ export class FormDetailsComponent implements OnInit {
     }
 
 
-    const pdfDocGenerator =  this.commonServiceService.pdfMake.createPdf(dd);
+    const pdfDocGenerator = this.commonServiceService.pdfMake.createPdf(dd);
     pdfDocGenerator.getDataUrl((dataUrl) => {
 
       const targetElement = document.querySelector('.iframeContainer');
@@ -96,7 +107,7 @@ export class FormDetailsComponent implements OnInit {
       const iframe = document.createElement('iframe');
       iframe.src = dataUrl;
       iframe.width = "100%";
-      iframe.height = (window.innerHeight -100)+ 'px';
+      iframe.height = (window.innerHeight - 100) + 'px';
       iframe.frameBorder = "0";
       iframe.scrolling = "no";
       targetElement.appendChild(iframe);
@@ -104,11 +115,25 @@ export class FormDetailsComponent implements OnInit {
   }
 
 
-  save(){
-    this.commonServiceService.addNewStudent(this.studentModel);
+  save() {
+    this.commonServiceService.addOrUpdateStudent(this.studentModel);
     this.router.navigate(['/Form/ALL']);
   }
 
+  fileChanged(e) {
+    const file = e.target.files[0];
+    this.getBase64(file);
+  }
 
+  getBase64(file) {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      this.commonServiceService.studentPhoto = reader.result as string;
+    };
+    reader.onerror = (error) => {
+      console.log('Error: ', error);
+    };
+  }
 
 }
