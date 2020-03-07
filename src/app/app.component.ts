@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, HostListener ,AfterViewInit} from '@angular/core';
+import { CommonServiceService } from './services/common-service.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'AngularElectronReactiveFormApp';
+
+  constructor(public commonServiceService: CommonServiceService){
+
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.commonServiceService.innerWidth = window.innerWidth;
+  }
+  
+  ngAfterViewInit(){
+    this.onResize("");
+  }
 }

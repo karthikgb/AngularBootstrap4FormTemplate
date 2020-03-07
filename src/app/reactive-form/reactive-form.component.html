@@ -15,18 +15,22 @@
           <h6>Opp: Dr.A.C. Kabbin Hospital</h6>
           <h5>SAUNDATTI-591126. Dist: Belagavi</h5>
         </div>
-        <div *ngIf="router.url != '/Form/ALL'" class="profilePicBorder col-3">
+        <div *ngIf="router.url != '/Form/ALL'" class="profilePicBorder row col-3">
           <img *ngIf="commonServiceService.studentPhoto == null" class="profilePic" src="../assets/icons/profile.png">
           <img *ngIf="commonServiceService.studentPhoto" class="img-thumbnail profilePic"  [src]="commonServiceService.studentPhoto">
         </div>
         
       </div>
-      <div class="appFormHead">
-        <div class="vavbtn allStu" routerLink="/Form/ALL">ALL Students</div>
-        <div class="vavbtn newStu" (click)="newClick()">New</div>
+      <div class="appFormHead row">
+        
         <div class="headerformlablebdy">
-          <h4 class="headerformlable">-: APPLICATION FORM :-</h4>
+          <h5 class="headerformlable" style="margin: 4px;">APPLICATION FORM</h5>
         </div>
+        <div class="btnallStu">
+          <div class="vavbtn " routerLink="/Form/ALL">ALL Students</div>
+          <div class="vavbtn newStu" (click)="newClick()">New</div>
+        </div>
+        
   
       </div>
     </div>

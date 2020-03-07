@@ -1,10 +1,15 @@
 <div class="formBdy ">
-  <div class="row" *ngIf="studentModel">
-    <table class="lefttab1 col-6" style="width:50%">
+  <div class="row" *ngIf="studentModel" style="margin: 0px;">
+    <table class="dispTables " [ngClass]="(commonServiceService.innerWidth < 900) ? 'col-12' :'col-6'">
+      <tr>
+        <th width="10%">Month</th>
+        <th width="40%">Savings</th>
+        <th width="50%">Savings</th>
+      </tr>
       <tr>
         <td class="slno">1.</td>
         <td class="formlablesec">Date Of Admission</td>
-        <td class="formValesec">
+        <td class="formValesec row">
           <input matInput class="form-control inputag" [(ngModel)]="studentModel.DateOfAdmission"
             [matDatepicker]="picker" placeholder="Choose a date">
           <mat-datepicker-toggle class="togledate" matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -40,7 +45,7 @@
       <tr>
         <td class="slno">6.</td>
         <td class="formlablesec">Date Of Birth</td>
-        <td class="formValesec">
+        <td class="formValesec row">
           <input matInput [(ngModel)]="studentModel.DateOfBirth" class="form-control inputag" [matDatepicker]="picker1"
             placeholder="Choose a date">
           <mat-datepicker-toggle class="togledate1" matSuffix [for]="picker1"></mat-datepicker-toggle>
@@ -70,7 +75,12 @@
       </tr>
 
     </table>
-    <table class="righttab1 col-6" style="width:50%">
+    <table class="dispTables " [ngClass]="(commonServiceService.innerWidth < 900) ? 'col-12' :'col-6'">
+      <tr>
+        <th width="10%">Month</th>
+        <th width="40%">Savings</th>
+        <th width="50%">Savings</th>
+      </tr>
 
       <tr>
         <td class="slno">10.</td>
@@ -138,21 +148,29 @@
         <td class="slno">18.</td>
         <td class="formlablesec">Photo</td>
         <td class="formValesec">
-          <input type="file" *ngIf="tempPhoto == null" id="myfile" (change)="fileChanged($event,studentModel)"   name="myfile">
+          <input class="form-control inputag" type="file" *ngIf="tempPhoto == null" id="myfile"
+            (change)="fileChanged($event,studentModel)" name="myfile">
           <div class="tempPhoto" *ngIf="tempPhoto != null" style="display: inline-flex;">
             <span>{{tempPhoto}} <i class="fa fa-trash-o" aria-hidden="true"></i></span>
-            
+
           </div>
         </td>
       </tr>
       <tr>
         <td class="slno">19.</td>
         <td class="formlablesec">Payment Status</td>
-        <td class="formValesec col-12">
-          <button (click)="save()" class="btn nextBtn col-3" type="button">Save</button>
-          <button class="btn nextBtn col-4"   (click)="onPaymentClick(studentModel)" type="button">Payment</button>
-          <button (click)="OpenPdf()" class="btn nextBtn col-3" type="button" data-toggle="modal"
-            data-target="#myModal">PDF</button>
+        <td class="formValesec row">
+          <div >
+            <button (click)="save()" class="btn nextBtn " type="button">Save</button>
+          </div>
+          <div >
+            <button class="btn nextBtn " (click)="onPaymentClick(studentModel)" type="button">Payment</button>
+
+          </div>
+          <div>
+            <button (click)="OpenPdf()" class="btn nextBtn" type="button" data-toggle="modal"
+              data-target="#myModal">PDF</button>
+          </div>
         </td>
       </tr>
     </table>

@@ -1,9 +1,19 @@
 .nextBtn {
     background-color: #a7a7a7;
-    margin-right: 1rem;
     margin-top: 5px;
+    margin-right: 8px;
     text-align: center;
 }
+
+
+
+
+@media screen and (max-width: 500px) {
+    .nextBtn  {
+      zoom: .5; /* The width is 100%, when the viewport is 800px or smaller */
+    }
+  }
+
 
 .modal-body {
     padding: 10px 10px 1px 10px;
@@ -31,23 +41,25 @@ td.formlablesec {
 }
 
 td.formValesec {
-    width: 50%;
+    // width: 50%;
+}
+
+.formValesec.row {
+    margin: 0;
 }
 
 .form-control.inputag {
-    width: 305px;
+    // width: 305px;
 }
 
 .togledate {
     position: absolute;
-    top: 0px;
-    left: 482px;
+    right: 0;
 }
 
 .togledate1 {
     position: absolute;
-    top: 201px;
-    left:  486px;
+    right: 0;
 }
 
 .iframeContainer{
@@ -73,4 +85,8 @@ input#myfile {
     border: 1px solid #ced4da;
     padding: 5px;
     width: 19rem;
+}
+
+.dispTables{
+    width: 100%;
 }

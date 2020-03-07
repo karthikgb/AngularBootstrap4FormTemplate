@@ -22,7 +22,7 @@ export class CommonServiceService {
   pdfMake: pdfMake;
 
   studentPhoto = null;
-
+  innerWidth = 0;
   emptyModel = {
     DateOfAdmission: new Date(),
     TempADMNo: null,

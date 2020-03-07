@@ -43,15 +43,18 @@ img.profilePic {
     background-color: #002147;
     color: #fff;
     width: 100%;
-    height: 35px;
 }
 
 h4.headerformlable {
-    position: absolute;
-    text-align: center;
     width: 100%;
     pointer-events: none;
-    margin-left: -10px;
+    
+}
+
+.btnallStu{
+    position: absolute;
+    right: 0;
+    margin-right: 8px;
 }
 
 .vavbtn {
@@ -68,3 +71,20 @@ h4.headerformlable {
     color: #000000;
     
 }
+
+
+/* Use a media query to add a breakpoint at 800px: */
+@media screen and (max-width: 900px) {
+    .example-app-name {
+      zoom: .5; /* The width is 100%, when the viewport is 800px or smaller */
+    }
+    img.institutelogo{
+        zoom: .5;
+    }
+
+    .profilePicBorder {
+       
+        zoom: .5;
+    }
+    
+  }
