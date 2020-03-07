@@ -22,10 +22,10 @@ const routes: Routes = [
       },
       {
         'path': 'New/:id',
-        'component': FormDetailsComponent
+        'component': FormDetailsComponent, 
       },
       {
-        'path': 'Payment',
+        'path': 'Payment/:id',
         'component': PaymentComponent
       },
       {

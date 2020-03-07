@@ -15,7 +15,7 @@
           <h6>Opp: Dr.A.C. Kabbin Hospital</h6>
           <h5>SAUNDATTI-591126. Dist: Belagavi</h5>
         </div>
-        <div class="profilePicBorder col-3">
+        <div *ngIf="router.url != '/Form/ALL'" class="profilePicBorder col-3">
           <img *ngIf="commonServiceService.studentPhoto == null" class="profilePic" src="../assets/icons/profile.png">
           <img *ngIf="commonServiceService.studentPhoto" class="img-thumbnail profilePic"  [src]="commonServiceService.studentPhoto">
         </div>

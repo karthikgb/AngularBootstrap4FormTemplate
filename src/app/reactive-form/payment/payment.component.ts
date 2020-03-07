@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonServiceService } from 'src/app/services/common-service.service';
 import { IStudentModel } from 'src/app/models/config-model';
+import { switchMap } from 'rxjs/operators';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-payment',
@@ -9,7 +11,7 @@ import { IStudentModel } from 'src/app/models/config-model';
 })
 export class PaymentComponent implements OnInit {
 
-  constructor(private commonServiceService:CommonServiceService) { }
+  constructor(private commonServiceService:CommonServiceService,public route:ActivatedRoute) { }
   Courses = [
     { value: 'CBTC' },
     { value: 'DISM' },
@@ -38,7 +40,8 @@ export class PaymentComponent implements OnInit {
     { 'slno': '1', 'Amount': 100, 'Date': '' },
     { 'slno': '2', 'Amount': 200, 'Date': '' }
   ]
-  studentModel:IStudentModel;
+  studentModel:IStudentModel = null;
+  CurrentId = null;
 
   ngOnInit() {
     // if(this.commonServiceService.currentViewStudent == null){
@@ -46,6 +49,24 @@ export class PaymentComponent implements OnInit {
     // } else {
     //   this.studentModel = this.commonServiceService.currentViewStudent ;
     // }
+
+    this.route.paramMap.pipe(
+      switchMap((params: ParamMap) => {
+        this.CurrentId = params.get('id')
+        return this.commonServiceService.getStudent(this.CurrentId);
+      }
+      )
+    ).subscribe((studentTemp: IStudentModel) => {
+      if (this.CurrentId == null) {
+        this.studentModel = this.commonServiceService.emptyModel;
+      } else if (studentTemp == null || studentTemp == undefined) {
+        // this.CurrentId = -1;
+      } else {
+        this.studentModel = studentTemp;
+      }
+    })
+
+
   }
 
   addNew(){

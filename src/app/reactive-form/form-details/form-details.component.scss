@@ -1,12 +1,9 @@
-
-
 .nextBtn {
     background-color: #a7a7a7;
     margin-right: 1rem;
     margin-top: 5px;
     text-align: center;
 }
-
 
 .modal-body {
     padding: 10px 10px 1px 10px;
@@ -17,7 +14,6 @@ table.righttab {
     right: 0;
     top: 0;
 }
-
 
 .formBdy {
     top: 247px;
@@ -58,7 +54,6 @@ td.formValesec {
     min-height: 457px;
 }
 
-
 iframe {
     overflow: hidden;
     height: 100%;
@@ -74,7 +69,8 @@ input#myfile {
     padding: 5px;
 }
 
-.alertMsgg {
-    text-align: center;
-    color: #c13a3a;
+.tempPhoto {
+    border: 1px solid #ced4da;
+    padding: 5px;
+    width: 19rem;
 }

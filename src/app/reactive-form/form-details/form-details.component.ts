@@ -62,7 +62,7 @@ export class FormDetailsComponent implements OnInit {
 
   studentModel: IStudentModel = null;
   CurrentId = null;
-
+  tempPhoto = null;
 
   ngOnInit() {
     this.route.paramMap.pipe(
@@ -78,6 +78,9 @@ export class FormDetailsComponent implements OnInit {
         // this.CurrentId = -1;
       } else {
         this.studentModel = studentTemp;
+        if(studentTemp.photo){
+          this.fileChanged(null,studentTemp)
+        }
       }
     })
 
@@ -120,9 +123,21 @@ export class FormDetailsComponent implements OnInit {
     this.router.navigate(['/Form/ALL']);
   }
 
-  fileChanged(e) {
-    const file = e.target.files[0];
+  fileChanged(e= null,studentModel) {
+    var file = null;
+    if(e == null){
+      file = studentModel.photo;
+      this.setPhoto(studentModel.photo.name,studentModel.photo)
+    } else {
+      file = e.target.files[0];
+      this.setPhoto( e.target.files["0"].name,file)
+    }
     this.getBase64(file);
+  }
+
+  setPhoto(photoname, photoObject){
+    this.tempPhoto = photoname;
+    this.studentModel.photo = photoObject;
   }
 
   getBase64(file) {
@@ -134,6 +149,12 @@ export class FormDetailsComponent implements OnInit {
     reader.onerror = (error) => {
       console.log('Error: ', error);
     };
+  }
+
+ 
+
+  onPaymentClick(student: IStudentModel) {
+    this.router.navigate(['Form','Payment',student.TempADMNo]);
   }
 
 }

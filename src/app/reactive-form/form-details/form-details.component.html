@@ -138,7 +138,11 @@
         <td class="slno">18.</td>
         <td class="formlablesec">Photo</td>
         <td class="formValesec">
-          <input type="file" id="myfile" (change)="fileChanged($event)"  name="myfile">
+          <input type="file" *ngIf="tempPhoto == null" id="myfile" (change)="fileChanged($event,studentModel)"   name="myfile">
+          <div class="tempPhoto" *ngIf="tempPhoto != null" style="display: inline-flex;">
+            <span>{{tempPhoto}} <i class="fa fa-trash-o" aria-hidden="true"></i></span>
+            
+          </div>
         </td>
       </tr>
       <tr>
@@ -146,7 +150,7 @@
         <td class="formlablesec">Payment Status</td>
         <td class="formValesec col-12">
           <button (click)="save()" class="btn nextBtn col-3" type="button">Save</button>
-          <button class="btn nextBtn col-4" routerLink="/Form/Payment" type="button">Payment</button>
+          <button class="btn nextBtn col-4"   (click)="onPaymentClick(studentModel)" type="button">Payment</button>
           <button (click)="OpenPdf()" class="btn nextBtn col-3" type="button" data-toggle="modal"
             data-target="#myModal">PDF</button>
         </td>

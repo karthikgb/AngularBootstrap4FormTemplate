@@ -20,7 +20,6 @@ export class AllEnrollmentComponent implements OnInit {
   }
 
   displayStudent(student: IStudentModel) {
-    // this.commonServiceService.currentViewStudent = student;
     this.router.navigate(['Form','New',student.TempADMNo]);
   }
 

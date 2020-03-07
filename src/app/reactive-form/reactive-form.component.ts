@@ -11,15 +11,15 @@ export class ReactiveFormComponent implements OnInit {
 
   constructor(private router: Router, public commonServiceService: CommonServiceService) { }
 
+
   ngOnInit() {
     // this.router.url
     this.router.events.subscribe((s) => {
       if (s instanceof NavigationEnd) {
-         if( s.urlAfterRedirects == "/Form/ALL"){
-            this.commonServiceService.studentPhoto = null;
-         }
+        if (s.urlAfterRedirects == "/Form/ALL") {
+          this.commonServiceService.studentPhoto = null;
+        } 
       }
-
     });
   }
 

@@ -114,4 +114,18 @@ export class CommonServiceService {
     }
   }
 
+  public getPdfStudentDefinition(id){
+    return {
+      content: [
+        {
+          text: 'RECEIPT',
+          bold: true,
+          fontSize: 20,
+          alignment: 'center',
+          margin: [0, 0, 0, 20]
+        }
+      ]
+    }
+  }
+
 }
