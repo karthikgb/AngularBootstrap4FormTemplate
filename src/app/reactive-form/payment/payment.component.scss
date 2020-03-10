@@ -16,15 +16,25 @@ table.payentttab {
     top: 10px;
 }
 
+@media screen and (max-width: 500px) {
+    .payentttab  {
+      zoom: .7; /* The width is 100%, when the viewport is 800px or smaller */
+    }
+    .addtBtn {
+        zoom: .7; 
+    }
+  }
+
+
 
 td.slno {
+
+    
     width: 10%;
     text-align: center;
 }
 
 td.formlablesec {
-    width: 40%;
-    padding-left: 34px;
 }
 
 td.formValesec {
@@ -36,23 +46,26 @@ td.formValesec {
     right: 0px;
 }
 
+
+.dtpickinp{
+    // padding-right: 1.75rem;
+}
+
 td.paySlno {
-    padding-left: 17px;
 }
 
 td.payVal{
-    padding-left: 17px;
 }
 
 td.payBal {
 
 }
 td.payBalAmo {
-    padding-left: 17px;
+    // padding-left: 17px;
 
 }
 td.payDate {
-    padding-left: 10px;
+    // padding-left: 10px;
 
 }
 
@@ -61,21 +74,17 @@ td.payDate {
     right:  0px;
 }
 
-.lastAddlable{
-    padding: 9px;
-}
-
-.lastAddRowws {
-    padding: 10px 1px 11px 30px;
-}
 
 .addtBtn {
     background-color: #a7a7a7;
-    width: 41px;
-    height:  40px;
 }
 
-tr.lastAddRow {
-    text-align: right;
-    position: relative;
+.lastAddRow {
+    width: 100%;
+    margin-top: 16px;
+}
+
+input.inputag.dtpickinp {
+    padding-right: 1.75rem;
+    
 }

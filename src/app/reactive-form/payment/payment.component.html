@@ -1,9 +1,8 @@
 <div class="formBdy ">
-  <div>{{studentModel}}</div>
 
   <div *ngIf="studentModel" class="row">
 
-    <table class="lefttab col-6">
+    <table class="lefttab " [ngClass]="(commonServiceService.innerWidth < 900) ? 'col-12' :'col-6'">
       <tr>
         <td class="slno">1.</td>
         <td class="formlablesec">Student Name</td>
@@ -11,23 +10,23 @@
           <input [(ngModel)]="studentModel.Name" type="text" class="form-control inputag">
         </td>
       </tr>
-  
+
       <tr>
         <td class="slno">2.</td>
         <td class="formlablesec">Date Of Admission</td>
         <td class="formValesec">
           <div class="row" style="margin: 0px !important;">
-            <input [(ngModel)]="studentModel.DateOfAdmission" matInput class="form-control inputag" [matDatepicker]="picker"
-            placeholder="Choose a date">
-          <mat-datepicker-toggle class="togledate" matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
+            <input [(ngModel)]="studentModel.DateOfAdmission" matInput class="form-control inputag dtpickinp"
+              [matDatepicker]="picker" placeholder="Choose a date">
+            <mat-datepicker-toggle class="togledate" matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
           </div>
-      
+
         </td>
       </tr>
-  
+
     </table>
-    <table class="righttab col-6">
+    <table class="righttab " [ngClass]="(commonServiceService.innerWidth < 900) ? 'col-12' :'col-6'">
       <tr>
         <td class="slno">3.</td>
         <td class="formlablesec">Courses</td>
@@ -47,44 +46,42 @@
         </td>
       </tr>
     </table>
-    <h2>Payment :</h2>
-    <table class="payentttab col-12">
-      <tr class="row" *ngFor="let paid of paidAmount;let index = index">
-  
-        <div class="col-4">
-          <td class="paySlno ">{{index + 1}}. &nbsp; &nbsp; Payment Paid</td>
+    <div style="width: 100%;"><h2>Payment :</h2></div>
+    
+    <table class="payentttab" [ngClass]="(commonServiceService.innerWidth < 900) ? 'col-12' :'col-6'" >
+      <tr>
+        <th width="5%">No.</th>
+        <th width="28%">Paid</th>
+        <th width="27%">Balance</th>
+        <th width="40%">Date</th>
+      </tr>
+      <tr class="" style="margin: 0;" *ngFor="let paid of paidAmount;let index = index">
+
+        <!-- &nbsp; &nbsp; Payment Paid -->
+
+          <td class="paySlno ">{{index + 1}}.</td>
           <td class="payVal ">
             <input type="text" [(ngModel)]='paid.Amount' class="form-control">
           </td>
-        </div>
-        <div class="col-4">
-          <td class="payBal ">Balance </td>
           <td class="payBalAmo ">
             <input type="text" class="form-control">
           </td>
-          <td class="payDate ">
-            <div class="row">
-              <input matInput class="form-control inputag" [matDatepicker]="picker" placeholder="Choose a date">
-  
-              <mat-datepicker-toggle class="paytogledate" matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
+          <td class="payDate">
+            <div class="row col-12" style="padding-right: 0;">
+              <input matInput class="form-control inputag dtpickinp" [matDatepicker]="picker"
+              placeholder="Choose a date">
+            <mat-datepicker-toggle class="paytogledate" matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
             </div>
-  
+              
           </td>
-        </div>
-  
-  
-  
-  
+
       </tr>
-      <tr class="lastAddRow">
-        <div class="lastAddRowws row">
-          <h6 class="lastAddlable">Add new Payment</h6>
-          <button class="btn addtBtn" (click)="addNew()" type="button">+</button>
-        </div>
-  
-      <tr>
+    
     </table>
+      <div class="lastAddRow">
+          <button class="btn addtBtn" (click)="addNew()" type="button">Add</button>
+      <div>
   </div>
 
   <div *ngIf="!studentModel" class="alertMsgg">

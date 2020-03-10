@@ -12,6 +12,13 @@
     .nextBtn  {
       zoom: .7; /* The width is 100%, when the viewport is 800px or smaller */
     }
+    .dispTables{
+        width: 100%;
+        zoom: .7;
+    }
+    .formValesec.row.allbtnss{
+        zoom: .9;
+    }
   }
 
 
@@ -81,12 +88,21 @@ input#myfile {
     padding: 5px;
 }
 
-.tempPhoto {
-    border: 1px solid #ced4da;
-    padding: 5px;
-    width: 19rem;
+.deleticonn:hover {
+    color: red;
 }
 
 .dispTables{
     width: 100%;
+}
+
+.deleticonn {
+    position: absolute;
+    right: 0;
+    margin-top: 12px;
+    margin-right: 6px;
+}
+
+input.inputag.delbtnn {
+    padding-right: 1.75rem;
 }

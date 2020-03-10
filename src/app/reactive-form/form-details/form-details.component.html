@@ -150,8 +150,10 @@
         <td class="formValesec">
           <input class="form-control inputag" type="file" *ngIf="tempPhoto == null" id="myfile"
             (change)="fileChanged($event,studentModel)" name="myfile">
-          <div class="tempPhoto" *ngIf="tempPhoto != null" style="display: inline-flex;">
-            <span>{{tempPhoto}} <i class="fa fa-trash-o" aria-hidden="true"></i></span>
+          <div *ngIf="tempPhoto != null" class="row" style=" margin: 0;">
+            <input class="form-control inputag delbtnn" [(ngModel)]="tempPhoto" disabled>
+            <i class="fa fa-trash-o deleticonn" aria-hidden="true"></i>
+            <!-- <div>{{tempPhoto}} <i class="fa fa-trash-o" aria-hidden="true"></i></div> -->
 
           </div>
         </td>
@@ -159,7 +161,7 @@
       <tr>
         <td class="slno">19.</td>
         <td class="formlablesec">Payment Status</td>
-        <td class="formValesec row">
+        <td class="formValesec row allbtnss">
           <div >
             <button (click)="save()" class="btn nextBtn " type="button">Save</button>
           </div>

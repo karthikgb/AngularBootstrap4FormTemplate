@@ -11,3 +11,9 @@
 .table th, .table td {
     padding: 0.25rem;
 }
+
+@media screen and (max-width: 500px) {
+    .alltable  {
+      zoom: .7; /* The width is 100%, when the viewport is 800px or smaller */
+    }
+  }
