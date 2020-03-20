@@ -78,8 +78,10 @@ export class FormDetailsComponent implements OnInit {
         // this.CurrentId = -1;
       } else {
         this.studentModel = studentTemp;
-        if(studentTemp.photo){
-          this.fileChanged(null,studentTemp)
+        if (studentTemp.photo) {
+          setTimeout(()=>{
+            this.commonServiceService.studentPhoto = studentTemp.photo;
+          },100)
         }
       }
     })
@@ -123,38 +125,31 @@ export class FormDetailsComponent implements OnInit {
     this.router.navigate(['/Form/ALL']);
   }
 
-  fileChanged(e= null,studentModel) {
+  fileChanged(e, studentModel) {
     var file = null;
-    if(e == null){
-      file = studentModel.photo;
-      this.setPhoto(studentModel.photo.name,studentModel.photo)
-    } else {
-      file = e.target.files[0];
-      this.setPhoto( e.target.files["0"].name,file)
-    }
-    this.getBase64(file);
+    file = e.target.files[0];
+    studentModel.photoName = e.target.files["0"].name;
+    this.getBase64(file, studentModel);
   }
 
-  setPhoto(photoname, photoObject){
-    this.tempPhoto = photoname;
-    this.studentModel.photo = photoObject;
-  }
 
-  getBase64(file) {
+  getBase64(file, studentModel) {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
       this.commonServiceService.studentPhoto = reader.result as string;
+      this.studentModel.photo = this.commonServiceService.studentPhoto;
+
     };
     reader.onerror = (error) => {
       console.log('Error: ', error);
     };
   }
 
- 
+
 
   onPaymentClick(student: IStudentModel) {
-    this.router.navigate(['Form','Payment',student.TempADMNo]);
+    this.router.navigate(['Form', 'Payment', student.TempADMNo]);
   }
 
 }

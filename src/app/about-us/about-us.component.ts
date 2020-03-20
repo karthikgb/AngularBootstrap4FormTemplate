@@ -11,12 +11,16 @@ export class AboutUsComponent implements OnInit {
   constructor(private commonServiceService: CommonServiceService) { }
 
   ngOnInit() {
-  this.OpenPdf()
+    this.commonServiceService.getStudent(234234).subscribe(x => {
+      this.OpenPdf()
+    });
+    
   }
+  
 
   OpenPdf() {
-    var dd= this.commonServiceService.getPdfStudentDefinition(123445);
- 
+    var dd = this.commonServiceService.getPdfStudentDefinition(123445);
+
 
 
     const pdfDocGenerator = this.commonServiceService.pdfMake.createPdf(dd);

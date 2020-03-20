@@ -148,10 +148,10 @@
         <td class="slno">18.</td>
         <td class="formlablesec">Photo</td>
         <td class="formValesec">
-          <input class="form-control inputag" type="file" *ngIf="tempPhoto == null" id="myfile"
+          <input class="form-control inputag" type="file" *ngIf="studentModel.photoName == null" id="myfile"
             (change)="fileChanged($event,studentModel)" name="myfile">
-          <div *ngIf="tempPhoto != null" class="row" style=" margin: 0;">
-            <input class="form-control inputag delbtnn" [(ngModel)]="tempPhoto" disabled>
+          <div *ngIf="studentModel.photoName != null" class="row" style=" margin: 0;">
+            <input class="form-control inputag delbtnn" [(ngModel)]="studentModel.photoName" disabled>
             <i class="fa fa-trash-o deleticonn" aria-hidden="true"></i>
             <!-- <div>{{tempPhoto}} <i class="fa fa-trash-o" aria-hidden="true"></i></div> -->
 

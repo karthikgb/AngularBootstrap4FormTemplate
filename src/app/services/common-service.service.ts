@@ -42,7 +42,8 @@ export class CommonServiceService {
     Fees: null,
     PermanentAddress: null,
     PaymentStatus: {},
-    photo:null
+    photo:null,
+    photoName:''
   }
 
   Allstudents: Array<IStudentModel> = null;
@@ -86,7 +87,8 @@ export class CommonServiceService {
     }
   }
 
-  public getStudent(id) {
+
+  public getStudent(id):Observable<any> {
     if (this.Allstudents == null) {
       return this.getAllStudentEnrollment()
         .pipe(map(res => {
@@ -114,18 +116,111 @@ export class CommonServiceService {
     }
   }
 
+   resume:IStudentModel ;
   public getPdfStudentDefinition(id){
-    return {
+
+    var data:IStudentModel = this.getstudentFun(234234);
+    this.resume = data;
+    console.log(data)
+
+    return  {
       content: [
         {
-          text: 'RECEIPT',
+          text: 'RESUME',
           bold: true,
           fontSize: 20,
           alignment: 'center',
           margin: [0, 0, 0, 20]
+        },
+        {
+          columns: [
+            [{
+              text: this.resume.Name,
+              style: 'name'
+            },
+            {
+              text: this.resume.CurrentAddress
+            },
+            {
+              text: 'Email : ' + 'haikarthikgb@gmail.com',
+            },
+            {
+              text: 'Contant No : ' + this.resume.ContactNo,
+            }
+            ],
+            [
+              this.getProfilePicObject()
+            ]
+          ]
+        },
+        {
+          text: 'Application',
+          style: 'header'
+        },
+        {
+          text: 'Experience',
+          style: 'header'
+        },
+        {
+          text: 'Education',
+          style: 'header'
+        },
+        {
+          text: 'Signature',
+          style: 'sign'
+        },
+        {
+          columns : [
+              {
+              text: `(${this.resume.Name})`,
+              alignment: 'right',
+              }
+          ]
         }
-      ]
+      ],
+      info: {
+        title: this.resume.Name + '_RESUME',
+        author: this.resume.Name,
+        subject: 'RESUME',
+        keywords: 'RESUME, ONLINE RESUME',
+      },
+        styles: {
+          header: {
+            fontSize: 18,
+            bold: true,
+            margin: [0, 20, 0, 10],
+            decoration: 'underline'
+          },
+          name: {
+            fontSize: 16,
+            bold: true
+          },
+          jobTitle: {
+            fontSize: 14,
+            bold: true,
+            italics: true
+          },
+          sign: {
+            margin: [0, 50, 0, 10],
+            alignment: 'right',
+            italics: true
+          },
+          tableHeader: {
+            bold: true,
+          }
+        }
+    };
+  }
+
+  getProfilePicObject() {
+    if (this.resume.photo) {
+      return {
+        image: this.resume.photo ,
+        width: 75,
+        alignment : 'right'
+      };
     }
+    return null;
   }
 
 }
