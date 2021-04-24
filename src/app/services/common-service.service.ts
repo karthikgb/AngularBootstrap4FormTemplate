@@ -72,7 +72,7 @@ export class CommonServiceService {
 
   public getAllStudentEnrollment(): Observable<Array<IStudentModel>> {
     if (this.Allstudents == null) {
-      return this.http.get('./assets/tempstudentdata.json').pipe(
+      return this.http.get('./assets/tempstudentdata1.json').pipe(
         map((res: any) => {
           this.Allstudents = <IStudentModel[]>res
           return this.Allstudents;
